@@ -1,0 +1,43 @@
+{
+    "name": "Medivo LandingPage",
+    "description": "Landingpage of Medivo",
+    "authors": [
+        {
+            "name": "Jonathan Leon",
+            "email": "jonathan@clooudea.me"
+        },
+        {
+            "name": "Osvaldo Garcia",
+            "email": "osvaldo@cloudea.me"
+        }
+    ],
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2",
+        "medivo",
+        "cloudea",
+        "medical",
+        "doctor"
+    ],
+    "minimum-stability": "stable",
+    "homepage": "http://medivo.mx/",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zend-eventmanager": "*",
+        "zendframework/zend-loader": "*",
+        "zendframework/zend-mvc": "*",
+        "zendframework/zend-modulemanager": "*",
+        "zendframework/zend-config": "*",
+        "zendframework/zend-view": "*",
+        "zendframework/zend-serializer": "*",
+        "zendframework/zend-log": "*",
+        "zendframework/zend-i18n": "*",
+        "zendframework/zend-console": "*",
+        "zendframework/zend-http": "*",
+        "zendframework/zend-cache": "*",
+        "zendframework/zend-session": "*",
+        "zendframework/zend-version": "*",
+        "mailgun/mailgun-php": "*"
+    }
+}
