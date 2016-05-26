@@ -38,6 +38,7 @@
         "zendframework/zend-cache": "*",
         "zendframework/zend-session": "*",
         "zendframework/zend-version": "*",
-        "mailgun/mailgun-php": "*"
+        "mailgun/mailgun-php": "*",
+        "guzzlehttp/guzzle": "~6.0"
     }
 }
