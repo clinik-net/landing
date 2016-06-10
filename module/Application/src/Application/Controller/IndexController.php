@@ -12,6 +12,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
 
 class IndexController extends AbstractActionController
 {
@@ -41,13 +43,30 @@ class IndexController extends AbstractActionController
                         "password" => $passwd,
                         'deviceId' => 'dskjlfhewfewhfhwefherwf'
                     ]);
-            $response = $client->request(
-                'POST',
-                '/user',
-                [ 'body' => $body ]
-            );
 
-            var_dump($response);die();
+            try {
+                $response = $client->request(
+                    'POST',
+                    '/user',
+                    [ 
+                        'body' => $body,
+                        'http_errors' => false
+                    ]
+                );
+
+                $code = $response->getStatusCode();
+                $reason = $response->getReasonPhrase();
+                $content = $response->getBody();
+                $body = json_decode( $content->getContents() );
+                var_dump($body);die();
+
+            } catch ( RequestException $e ) {
+                echo Psr7\str($e->getResponse());
+                echo "============";
+                echo Psr7\str($e->getHeaders());
+            }
+    
+
 
         }
         return new ViewModel();

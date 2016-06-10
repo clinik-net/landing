@@ -1,4 +1,4 @@
-ZendSkeletonApplication
+Medivo Landingpage
 =======================
 
 Introduction
@@ -69,50 +69,36 @@ To setup apache, setup a virtual host to point to the public/ directory of the
 project and you should be ready to go! It should look something like below:
 
     <VirtualHost *:80>
-        ServerName zf2-app.localhost
-        DocumentRoot /path/to/zf2-app/public
-        <Directory /path/to/zf2-app/public>
+        ServerAdmin webmaster@localhost
+        ServerName medivo.local
+
+        SetEnv APPLICATION_ENV "development"
+
+        SetEnv MONGODB_NAME "medivo_mx"
+        SetEnv MONGODB_USER "medivo_user_1"
+        SetEnv MONGODB_PASSWORD "medivo_pass123"
+        SetEnv MONGODB_URL "mongodb://localhost:27017"
+
+        DocumentRoot /path/to/application/medivo_landingpage/public
+
+        <Directory /path/to/application/medivo_landingpage/public/ >
+            RewriteEngine On
             DirectoryIndex index.php
-            AllowOverride All
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
             Order allow,deny
-            Allow from all
-            <IfModule mod_authz_core.c>
-            Require all granted
-            </IfModule>
+            allow from all
+            require all granted
+
+            RewriteCond %{REQUEST_FILENAME} -s [OR]
+            RewriteCond %{REQUEST_FILENAME} -l [OR]
+            RewriteCond %{REQUEST_FILENAME} -d
+            RewriteRule ^.*$ - [NC,L]
+            RewriteRule ^.*$ /index.php [NC,L]
         </Directory>
+
+        ErrorLog /path/logs/medivo_landingpage-error.log
+
+        LogLevel warn
+        CustomLog /path/logs/medivo_landingpage-access.log combined
     </VirtualHost>
-
-### Nginx setup
-
-To setup nginx, open your `/path/to/nginx/nginx.conf` and add an
-[include directive](http://nginx.org/en/docs/ngx_core_module.html#include) below
-into `http` block if it does not already exist:
-
-    http {
-        # ...
-        include sites-enabled/*.conf;
-    }
-
-
-Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/zf2-app.localhost.conf`
-it should look something like below:
-
-    server {
-        listen       80;
-        server_name  zf2-app.localhost;
-        root         /path/to/zf2-app/public;
-
-        location / {
-            index index.php;
-            try_files $uri $uri/ @php;
-        }
-
-        location @php {
-            # Pass the PHP requests to FastCGI server (php-fpm) on 127.0.0.1:9000
-            fastcgi_pass   127.0.0.1:9000;
-            fastcgi_param  SCRIPT_FILENAME /path/to/zf2-app/public/index.php;
-            include fastcgi_params;
-        }
-    }
-
-Restart the nginx, now you should be ready to go!
