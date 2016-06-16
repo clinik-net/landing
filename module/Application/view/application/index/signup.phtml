@@ -11,11 +11,49 @@
 </div>
 <!-- Nav Menu Section End -->
 
-<!-- Hero Area Section -->
 
 <section id="sign-up-area">
   <div class="container">
     <div class="row">
+    <?php 
+    //$this->code = 201;
+    if ( isset( $this->code ) && 201 === $this->code ) { ?>
+      <div class="col-md-12">
+        <h1 class="title-big wow fadeIn">Congratulations!</h1>
+        <!-- <h2 class="subtitle-small wow fadeInLeft" data-wow-delay=".5s"> -->
+        <h3 class="subtitle-big"><?php echo $this->name ?> ! </h3>
+        <h3 class="subtitle-big">
+        You have been registred successfully. 
+        </h3>
+        
+        <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" href="/sign-in">Sign In</a>
+      </div>
+    <?php } elseif ( isset( $this->code ) && 409 === $this->code ) { ?>
+      <div class="col-md-12">
+        <h1 class="title-big wow fadeIn">Join Us Today!</h1>
+        <h3 class="subtitle-big" style="color:red">User already exists, please verify.</h3>
+      </div>
+
+      <div class="col-md-12 text-center">
+
+        <form role="form" class="sign-up-form" method="post">
+          <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4 wow fadeInDown">
+            <input type="text" name="name" class="form-control" id="signupname" placeholder="Name" value="<?php echo $this->name ?>">
+          </div>
+
+          <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4 wow fadeInDown"data-wow-delay=".1s">
+            <input type="email" name="mail" class="form-control" id="signupemail" placeholder="Enter email">
+          </div>
+          <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4 wow fadeInDown" data-wow-delay=".2s">
+            <input type="password" name="password" class="form-control" id="signuppassword" placeholder="Password">
+
+            <!-- <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" href="/sign-up">Sign Up</a> -->
+
+            <input type="submit" class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" value="Sign-Up">
+          </div>
+        </form>
+      </div>
+    <?php } else { ?> 
       <div class="col-md-12">
         <h1 class="title-big wow fadeIn">Join Us Today!</h1>
         <h2 class="subtitle-big">Enjoy our Awesomeness</h2>
@@ -40,6 +78,7 @@
           </div>
         </form>
       </div>
+    <?php } ?> 
     </div>
   </div>
 </div>

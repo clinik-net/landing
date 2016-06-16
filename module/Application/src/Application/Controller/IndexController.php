@@ -1,11 +1,4 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application\Controller;
 
@@ -26,7 +19,7 @@ class IndexController extends AbstractActionController
     {
         $request = $this->getRequest();
 
-        if ($request->isPost()) {
+        if ($request->isPost() ) {
             $name = $request->getPost('name');
             $mail = $request->getPost('mail');
             $passwd = $request->getPost('password');
@@ -55,20 +48,42 @@ class IndexController extends AbstractActionController
                 );
 
                 $code = $response->getStatusCode();
-                $reason = $response->getReasonPhrase();
+
                 $content = $response->getBody();
                 $body = json_decode( $content->getContents() );
-                var_dump($body);die();
 
+                $error = $body->error;
+                $message = $body->message;
+
+
+
+                if ( 201 === $code ) {
+                    $mess = "Created";
+                } elseif ( 409 === $code ) {
+                    $mess = "Ya existe un usuario registrado con ese correo";
+                } elseif ( 400 === $code ) {
+                    $mess = "faltan datos para registrar, intenta de nuevo";
+                }
+
+                $view = new ViewModel(array(
+                    'error' => $error,
+                    'code' => $code,
+                    'message' => $mess,
+                    'name' => $name
+                ));
+
+                /*
+                $reason = $response->getReasonPhrase();
+                */
             } catch ( RequestException $e ) {
                 echo Psr7\str($e->getResponse());
                 echo "============";
                 echo Psr7\str($e->getHeaders());
             }
-    
 
+            return $view;
+        } // isPost() 
 
-        }
         return new ViewModel();
     }
 
