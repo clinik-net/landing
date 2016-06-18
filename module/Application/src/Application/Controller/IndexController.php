@@ -26,7 +26,7 @@ class IndexController extends AbstractActionController
             
             $client = new Client([
                 // Base URI is used with relative requests
-                'base_uri' => 'http://api.medivo.local',
+                'base_uri' => '//api.medivo.mx',
                 // You can set any number of default request options.
                 'timeout'  => 2.0,
             ]);
@@ -49,8 +49,9 @@ class IndexController extends AbstractActionController
 
                 $code = $response->getStatusCode();
 
+
                 $content = $response->getBody();
-                $body = json_decode( $content->getContents() );
+                $body = json_decode( $content->getContents() );var_dump($body);exit;
 
                 $error = $body->error;
                 $message = $body->message;
