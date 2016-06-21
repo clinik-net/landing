@@ -51,7 +51,7 @@ class IndexController extends AbstractActionController
 
 
                 $content = $response->getBody();
-                $body = json_decode( $content->getContents() );var_dump($body);exit;
+                $body = json_decode( $content->getContents() );
 
                 $error = $body->error;
                 $message = $body->message;
