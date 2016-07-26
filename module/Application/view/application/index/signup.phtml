@@ -1,9 +1,9 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav pull-right">
-          <li><a href="/">Home</a></li>
-          <li><a href="/features">Features</a></li>
-          <li><a href="/sign-in">Sign In</a></li>
-          <li class="active"><a href="#">Sign Up</a></li>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/features">Características</a></li>
+          <li><a href="/sign-in">Ingresar</a></li>
+          <li class="active"><a href="#">Registro</a></li>
         </ul>
       </div>
     </div>
@@ -19,19 +19,19 @@
     //$this->code = 201;
     if ( isset( $this->code ) && 201 === $this->code ) { ?>
       <div class="col-md-12">
-        <h1 class="title-big wow fadeIn">Congratulations!</h1>
+        <h1 class="title-big wow fadeIn">Felicidades!</h1>
         <!-- <h2 class="subtitle-small wow fadeInLeft" data-wow-delay=".5s"> -->
         <h3 class="subtitle-big"><?php echo $this->name ?> ! </h3>
         <h3 class="subtitle-big">
-        You have been registred successfully. 
+        Has quedado registrado exitosamente. 
         </h3>
         
-        <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" href="/sign-in">Sign In</a>
+        <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" href="/sign-in">Ingresar</a>
       </div>
     <?php } elseif ( isset( $this->code ) && 409 === $this->code ) { ?>
       <div class="col-md-12">
-        <h1 class="title-big wow fadeIn">Join Us Today!</h1>
-        <h3 class="subtitle-big" style="color:red">User already exists, please verify.</h3>
+        <h1 class="title-big wow fadeIn">Únete hoy!</h1>
+        <h3 class="subtitle-big" style="color:red">EL usuario ya existe en el sistema, favor de verificar.</h3>
       </div>
 
       <div class="col-md-12 text-center">
@@ -49,14 +49,14 @@
 
             <!-- <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" href="/sign-up">Sign Up</a> -->
 
-            <input type="submit" class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" value="Sign-Up">
+            <input type="submit" class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" value="Registrarse">
           </div>
         </form>
       </div>
     <?php } else { ?> 
       <div class="col-md-12">
-        <h1 class="title-big wow fadeIn">Join Us Today!</h1>
-        <h2 class="subtitle-big">Enjoy our Awesomeness</h2>
+        <h1 class="title-big wow fadeIn">Únete hoy!</h1>
+        <h2 class="subtitle-big">Disfruta nuestos beneficios</h2>
       </div>
 
       <div class="col-md-12 text-center">
@@ -74,7 +74,7 @@
 
             <!-- <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" href="/sign-up">Sign Up</a> -->
 
-            <input type="submit" class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" value="Sign-Up">
+            <input type="submit" class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" value="Registrarse">
           </div>
         </form>
       </div>
